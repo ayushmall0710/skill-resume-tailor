@@ -19,10 +19,10 @@ All available bullets from resume templates. When tailoring a resume, SELECT fro
 3. **Multi-cloud Ingestion (50M+ variant)** ⭐ PREFERRED
    > Designed and delivered an end-to-end ingestion framework integrating multi-cloud object storage (S3, Azure Blob, GCS) with incremental loads and delta management, capable of processing 50M+ files in production.
 
-5. **LLM Augmentation**
+4. **LLM Augmentation**
    > Built a scalable LLM-augmentation feature enabling million-row scale data enrichment via user prompts (e.g., identifying sustainability keywords and assigning ESG scores), unlocking diverse downstream use cases.
 
-6. **ESG Scoping** (rarely used)
+5. **ESG Scoping** (rarely used)
    > Scoped ESG compliance applications by prototyping LLM-based entity retrieval, aligning platform capabilities with high-value regulatory use cases.
 
 ---
@@ -176,10 +176,10 @@ Platforms & Tools: Databricks (FS, Notebooks, Catalog, Jobs), DuckDB, Apache Ice
 % 3. Multi-cloud Ingestion (50M+ variant) - PREFERRED
 \item \textbf{Designed and delivered an end-to-end ingestion framework} integrating multi-cloud object storage (S3, Azure Blob, GCS) with incremental loads and delta management, \textbf{capable of processing 50M+} files in production.
 
-% 5. LLM Augmentation
+% 4. LLM Augmentation
 \item \textbf{Built a scalable LLM-augmentation feature} enabling million-row scale data enrichment via user prompts (e.g., identifying sustainability keywords and assigning ESG scores), unlocking diverse downstream use cases.
 
-% 6. ESG Scoping (rarely used)
+% 5. ESG Scoping (rarely used)
 \item \textbf{Scoped ESG compliance applications} by prototyping LLM-based entity retrieval, aligning platform capabilities with high-value regulatory use cases.
 
 ```

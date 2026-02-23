@@ -1,6 +1,8 @@
 ---
 name: resume-tailor
 description: Tailors LaTeX resumes for job applications. Use when user shares a job description and needs a customized resume. Handles JD analysis, bullet selection from master list, skills reordering, LaTeX compilation, and iterative edits. Requires H-1B sponsorship analysis for all applications.
+compatibility: Requires pdflatex and pdfinfo system packages for LaTeX compilation.
+allowed-tools: Bash
 ---
 
 # Resume Tailor Skill
@@ -66,7 +68,7 @@ After approval:
 Use the compile script:
 
 ```bash
-python3 /path/to/skill/scripts/compile_resume.py /home/claude/Resume.tex --name Company_Role_Resume
+python3 scripts/compile_resume.py /home/claude/Resume.tex --name Company_Role_Resume
 ```
 
 Or manually:
@@ -100,7 +102,7 @@ List all changes in bullet format:
 ## Key Context
 
 - **H-1B Required**: Always include sponsorship analysis
-- **Graduation**: April 2026
+- **Graduation**: March 2026
 - **Experience**: 4+ years (3 yrs Shell + Corvic internship + Aegis co-founding)
 - **Domain interest**: Climate/sustainability when relevant
 - **Corvic ingestion bullet**: Always use 50M+ files version
