@@ -19,17 +19,11 @@ All available bullets from resume templates. When tailoring a resume, SELECT fro
 3. **Multi-cloud Ingestion (50M+ variant)** ⭐ PREFERRED
    > Designed and delivered an end-to-end ingestion framework integrating multi-cloud object storage (S3, Azure Blob, GCS) with incremental loads and delta management, capable of processing 50M+ files in production.
 
-4. **Forecasting**
-   > Forecasted customer ingestion patterns using Silverkite (multi-seasonality, holidays) to optimize resource utilization by temporal workers, resulting in an 18% reduction in compute costs.
-
 5. **LLM Augmentation**
    > Built a scalable LLM-augmentation feature enabling million-row scale data enrichment via user prompts (e.g., identifying sustainability keywords and assigning ESG scores), unlocking diverse downstream use cases.
 
 6. **ESG Scoping** (rarely used)
    > Scoped ESG compliance applications by prototyping LLM-based entity retrieval, aligning platform capabilities with high-value regulatory use cases.
-
-7. **Client Demo**
-   > Engaged with a client to demonstrate the LLM-augmentation feature, tailoring it to their data workflow, showcasing its value for their use case and driving deal conversion.
 
 ---
 
@@ -93,7 +87,7 @@ Select 3 most relevant projects per resume.
 
 1. **PET/MRI Reconstruction** (Jan 2025 – Apr 2025)
    - **Shows:** CNNs, diffusion models, deep learning, research, healthcare/medical AI
-   - **Link:** https://github.com/aaditya0106/mri-to-pet-image-synthesis
+   - **Link:** https://github.com/[USERNAME]/mri-to-pet-image-synthesis
    > Conducting research to synthesize PET images from MRI scans using CNNs and diffusion-based stochastic models. Aims to offer non-invasive, cost-effective alternatives to PET imaging for use in neurology, oncology, and precision medicine.
 
 2. **Deepfake Detection - IEEE Published** (Published Feb 2024)
@@ -157,7 +151,6 @@ Platforms & Tools: Databricks (FS, Notebooks, Catalog, Jobs), DuckDB, Apache Ice
 | Source | Metric | Context |
 |--------|--------|---------|
 | Corvic | 50M+ files | Ingestion framework scale |
-| Corvic | 18% reduction | Compute cost savings from forecasting |
 | Corvic | 1M+ rows | LLM augmentation scale |
 | Shell | 97.85% reduction | Reporting turnaround time |
 | Shell | $80,000/year | Operational cost savings |
@@ -183,17 +176,12 @@ Platforms & Tools: Databricks (FS, Notebooks, Catalog, Jobs), DuckDB, Apache Ice
 % 3. Multi-cloud Ingestion (50M+ variant) - PREFERRED
 \item \textbf{Designed and delivered an end-to-end ingestion framework} integrating multi-cloud object storage (S3, Azure Blob, GCS) with incremental loads and delta management, \textbf{capable of processing 50M+} files in production.
 
-% 4. Forecasting
-\item \textbf{Forecasted customer ingestion patterns} using \textbf{Silverkite} (multi-seasonality, holidays) to optimize resource utilization by temporal workers, resulting in an \textbf{18\% reduction} in compute costs.
-
 % 5. LLM Augmentation
 \item \textbf{Built a scalable LLM-augmentation feature} enabling million-row scale data enrichment via user prompts (e.g., identifying sustainability keywords and assigning ESG scores), unlocking diverse downstream use cases.
 
 % 6. ESG Scoping (rarely used)
 \item \textbf{Scoped ESG compliance applications} by prototyping LLM-based entity retrieval, aligning platform capabilities with high-value regulatory use cases.
 
-% 7. Client Demo
-\item \textbf{Engaged with a client to demonstrate the LLM-augmentation feature}, tailoring it to their data workflow, showcasing its value for their use case and driving deal conversion.
 ```
 
 ### Shell Bullets
@@ -245,7 +233,7 @@ Platforms & Tools: Databricks (FS, Notebooks, Catalog, Jobs), DuckDB, Apache Ice
 ```latex
 % 1. PET/MRI Reconstruction
 \subsection{PET Reconstruction from MRI Using CNN and Diffusion Frameworks%
-\href{https://github.com/aaditya0106/mri-to-pet-image-synthesis}{~\faExternalLink*} \hfill \textit{Jan 2025 – Apr 2025}}
+\href{https://github.com/[USERNAME]/mri-to-pet-image-synthesis}{~\faExternalLink*} \hfill \textit{Jan 2025 – Apr 2025}}
 Conducting research to synthesize PET images from MRI scans using CNNs and diffusion-based stochastic models. Aims to offer non-invasive, cost-effective alternatives to PET imaging for use in neurology, oncology, and precision medicine.
 
 % 2. Deepfake Detection (IEEE Published)
