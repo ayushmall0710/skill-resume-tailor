@@ -1,0 +1,145 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[left=0.5in,right=0.5in,top=0.5in,bottom=0.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{parskip}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue
+}
+% Section heading format
+\titlespacing*{\section}{0pt}{1ex}{0.7ex}
+\titleformat{\section}
+  {\bfseries\large\color{black}}{}{0em}{}[\titlerule]
+\titlespacing*{\subsection}{0pt}{0.5ex}{0.5ex}
+\titleformat{\subsection}
+  {\bfseries\normalsize\color{black}}{}{0em}{}
+
+% Tighter item spacing
+\setlist[itemize]{noitemsep, topsep=0pt, leftmargin=1.2em}
+
+% Name & contact in one line
+\begin{document}
+\pagenumbering{gobble}
+
+% Name and Contact in two vertically centered columns
+\noindent
+\begin{minipage}[c]{0.55\textwidth} % 'c' for vertical centering
+    \vspace{0pt}
+    {\LARGE \textbf{AYUSH MALL}}
+\end{minipage}%
+\begin{minipage}[c]{0.45\textwidth} % also vertically centered
+    \raggedleft
+    Seattle, WA \ $|$ \ \href{tel:12064035956}{(206) 403 5956} \\
+    \href{https://www.linkedin.com/in/ayush-mall}{LinkedIn} \ $|$ \ \href{https://ayushmall.com}{ayushmall.com} \ $|$ \
+    \href{mailto:amall@uw.edu?subject=Resume\%20Enquiry}{amall@uw.edu} \\
+\end{minipage}
+
+\vspace{0.2em}
+
+\noindent\textit{Data Scientist with 4+ years of experience designing data systems and driving actionable insights. Currently contributing to an agentic data platform start-up while pursuing an MS in Data Science at the University of Washington.}
+
+% \noindent\textit{Data Scientist with 4+ years of experience designing data systems, and driving actionable insight generation. Supporting GenAI-native data platform development while pursuing an MS in Data Science at the University of Washington.}
+
+% \noindent\textit{Data Scientist with 4+ years of experience building scalable data models and pipelines, managing large datasets, and delivering actionable insights. Currently supporting product development at a fast-paced start-up with a focus on value creation and sustainability, while pursuing a Masterâ€™s in Data Science at the University of Washington.}
+
+% \noindent\rule{\textwidth}{0.4pt}
+
+% Skills & Tech-stack
+\section*{Skills \& Tech-stack}
+
+\textbf{Core Competencies:} NLP, Agentic Systems, Computer Vision, Distributed Computing, Machine Learning, Data Engineering, ETL, Statistical Modeling, Data Warehousing, Cloud Data Infrastructure, Data Visualization \\
+\textbf{Languages and Frameworks:} Python, SQL, BAML, Polars, PySpark, mQuery, Scikit-learn, TensorFlow, PyTorch \\
+\textbf{Platforms \& Tools:} Temporal.io, Databricks, DuckDB, Docker, Apache Iceberg, Huggingface Transformers, Microsoft Azure (ADF, ADLS), Tableau, QlikSense, Git, CICD, RESTful Web Services
+
+% \textbf{Core Competencies:} Data Engineering, ETL, Distributed Computing, Database Management, Data Warehousing, Machine Learning, Cloud Data Infrastructure, Batch Data Processing, NLP, Statistical Modeling, Data Visualization \\
+% \textbf{Languages and Frameworks:} Python, SQL, PySpark, MapReduce, Scikit-learn, PyTorch, Object-Relational Modeling \\
+% \textbf{Platforms \& Tools:} Databricks (FS, Notebooks, Clusters, Jobs), DuckDB, Apache Iceberg, Temporal.io, SQL Server, Docker, Microsoft Azure (ADF, ADLS), AWS, GCP, Tableau, QlikSense, Git, CICD, RESTful Web Services
+
+
+
+% Professional Experience
+\section*{Professional Experience}
+\subsection{Data Science \& Engineering Intern | Corvic AI, Mountain View \hfill
+\textit{Jun 2025 â€“ Present}}
+\textit{GenAI-native enterprise data-platform turning complex, multimodal data into explainable, actionable intelligence.}
+\begin{itemize}
+
+    \item \textbf{Automated end-to-end evaluation frameworks} for LLM-based information composition systems, implementing automated benchmarking pipelines with LLM-as-a-judge validation across multiple domain-specific datasets, enabling systematic quality measurement and model performance tracking.
+    \item \textbf{Designed and delivered an end-to-end ingestion framework} enabling integration of multi-cloud object storage (S3, Azure Blob, GCS) in product, supporting incremental loads and Apache Iceberg for large-scale data management.
+    % \item \textbf{Forecasted customer ingestion patterns} using \textbf{Silverkite} (multiâ€‘seasonality, holidays) to optimize resource utilization by temporal workers, resulting in an \textbf{18\% reduction} in compute costs.
+    \item \textbf{Built a scalable LLM-augmentation feature} enabling million-row scale data enrichment via user prompts (e.g., identifying sustainability keywords and assigning ESG scores), unlocking diverse downstream use cases.
+    % \item \textbf{Scoped ESG compliance applications} by prototyping LLM-based entity retrieval, aligning platform capabilities with high-value regulatory use cases.  
+   % \item \textbf{Engaged with a client to demonstrate the prototyped LLM-augmentation feature}, tailoring it to their data workflow, showcasing its value for their use case and driving deal conversion.
+
+\end{itemize}
+\vspace{0.3em}
+\subsection{Data Engineer | Shell India Markets Pvt. Ltd, Bangalore \hfill
+\textit{Oct 2021 â€“ Sept 2024}}
+\textit{Shipping and Maritime: Key contributor to project centralizing emission data management and analytics using the Azure tech stack, automating reporting for compliance, and enabling sustainable decision-making through PowerBI.}
+\begin{itemize}
+    \item \textbf{Engineered and deployed data pipelines} using ADF, Databricks, ADLS, and SQL to integrate 5 diverse sources, collaborating with 8 cross-functional teams to automate emission reporting, achieving \textbf{97.85\% reduction} in turnaround.
+    \item \textbf{Designed a DBSCAN-based clustering framework} utilizing metrics like AER and EEOI to group voyages into efficiency tiers, enabling ranked emission-performance profiling.
+    \item \textbf{Developed an ADF solution template} in an individual initiative submitted to the organizationâ€™s Continuous Improvement (CI) program, saving \textbf{$\sim$\$65,000 annually} in FTE costs from a single data solution use case.
+    \item Integrated an end-to-end solution for a data source, achieving annual \textbf{savings of \$80,000} in operational costs.
+    % \item \textbf{Articulated portfolio objectives and strategic goals} to a C-suite executive by presenting a business value review, securing resource allocation that \textbf{supported 4 key initiatives} throughout the fiscal year.
+    % \item \textbf{Designed a KPI scoring system} with Power BI and SharePoint, collaborating with 5 GMs \& the SVP, saving \textbf{40 hrs quarterly for top-tier leadership} by streamlining performance reporting.
+    \item \textbf{Led Knowledge Sharing Team} of the Logistics Portfolio, disseminating domain knowledge across 18 natural teams.
+\end{itemize}
+\vspace{0.3em}
+\subsection{Co-founder | Aegis Soft Solutions Pvt. Ltd, Ahmedabad \hfill
+\textit{May 2020 â€“ Aug 2021}}
+\textit{Co-founded a technology consulting firm delivering digitization and analytics-driven business solutions for small and mid-sized enterprises across multiple industries.}
+\begin{itemize}
+    \item \textbf{Architected and deployed a unified business analytics platform} integrating automation, data processing, and visualization layers to streamline operational workflows.
+    \item \textbf{Digitized key supply-chain processes} in the textile domain, \textbf{improving raw-to-product turnaround by 27\%} and enabling faster, data-driven decision-making through real-time KPI tracking.
+    \item \textbf{Built and hosted interactive dashboards} with ApexCharts, REST APIs, Redis, and PostgreSQL for cross-functional visibility into sales, operations, and finance performance.
+    % \item \textbf{Architected scalable data solutions} integrating process automation, analytics, and visualization layers that improved operational efficiency and decision-making across client portfolios.
+    % \item \textbf{Led end-to-end client engagements} from pitching and scoping to sub-goaling, and progress trackingâ€”ensuring alignment with business objectives and on-time delivery of solutions.
+\end{itemize}
+
+
+% \subsection{Software Engineer Intern | Idiotbox Inc, Mumbai \hfill
+% \textit{May 2020 â€“ Aug 2020}}
+% \textit{A start-up working on a universal content moderation platform for all OTT resources online.}
+% \begin{itemize}
+%     \item \textbf{Engineered the back-end} as a Django Developer, designing and implementing a REST API with 30+ endpoints, which serves as the backbone of a multi-platform system (Web App, iOS, and Android).
+%     \item \textbf{Collaborated directly with founding team} members during ideation sessions to shape the product design; this involvement identified three critical user pain points that the team ultimately resolved in the final release.
+%     \item \textbf{Earned recognition for contributions} to the product, an offer with equity for a Lead Back-End Developer role.
+% \end{itemize}
+
+% Education
+\section*{Education}
+\subsection{Master's in Data Science (MSDS) | University of Washington, Seattle \hfill
+\textit{Sept 2024 â€“ Mar 2026}}
+Coursework focused on statistical modeling, experiment design, and ML\ $|$\ GPA: 3.85/4.0
+
+\subsection{Bachelor of Technology | Amity University, Mumbai \hfill
+\textit{Mar 2017 â€“ Jun 2021}}
+Major: Computer Science \& Engineering\ $|$\ Minor: Photography\ $|$\ GPA: 9.26/10.0
+
+% Research & Projects
+\section*{Research \& Projects}
+
+\subsection{PET Reconstruction from MRI Using CNN and Diffusion Frameworks%
+\href{https://github.com/aaditya0106/mri-to-pet-image-synthesis}{~\faExternalLink*} \hfill \textit{Jan 2025 â€“ Apr 2025}}
+Conducting research to synthesize PET images from MRI scans using CNNs and diffusion-based stochastic models. Aims to offer non-invasive, cost-effective alternatives to PET imaging for use in neurology, oncology, and precision medicine.
+
+\subsection{Deepfake Face Swapping Detection Using Generative Adversarial Networks%
+\href{https://ieeexplore.ieee.org/document/10486289}{~\faExternalLink*}   \hfill \textit{Published Feb 2024}}
+Investigated GAN-based detection methods for identifying deepfake manipulations in visual media. Implemented adversarial training framework using CelebA dataset, achieving competitive discriminator and generator loss metrics (0.70558 and 0.72143 respectively) to distinguish AI-generated content. Published in IEEE Conference Proceedings (DOI: 10.1109).
+
+\subsection{Environmental, Social, and Governance (ESG) Metric Quantification Using NLP \hfill \textit{Oct 2024 â€“ Feb 2025}}
+Conducted research on automating ESG metric quantification using NLP, integrating BERT and RAG frameworks for enhanced contextual analysis and KPI identification to improve ESG reporting transparency and efficiency.
+
+% \subsection{Underwater Acoustic Monitoring for Marine Conservation (Orcasound Project) \hfill \textit{Apr 2025 â€“ Jun 2025}}
+% Collaborated with the eScience Institute to build scalable data pipelines and for marine noise monitoring in the Puget Sound. Project supports marine conservation efforts and long-term ecological research through ambient sound analysis.
+% Certification
+% \section*{Certification}
+% \href{https://www.credly.com/badges/9040b0a0-a967-4558-a5f8-02248fb1d555/linked_in_profile}{Microsoft Certified: Azure Fundamentals (AZ-900)} |
+% \href{https://www.coursera.org/account/accomplishments/verify/4ZSPNGDXVXW4?utm_medium=certificate&utm_source=link&utm_campaign=copybutton_certificate&utm_term=long}{Machine Learning Certificate course by Stanford University} |
+% \href{https://www.coursera.org/account/accomplishments/specialization/certificate/MPJAEKUQ3NAD}{Deep Learning Specialization (5 courses) by deeplearning.ai}
+\end{document}
