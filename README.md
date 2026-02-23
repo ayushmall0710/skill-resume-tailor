@@ -16,11 +16,27 @@ resume-tailor/
     └── compile_resume.py             # LaTeX compilation script
 ```
 
+## Install in Claude (Skill Types)
+
+Claude supports two common skill locations:
+
+- **Skills in Claude AI**: Settings -> Capabilities -> Skills -> + Add
+- **User skill** (available in all projects): `~/.claude/skills/resume-tailor/`
+- **Project skill** (available only in one repo): `<repo>/.claude/skills/resume-tailor/`
+
+Install steps:
+
+1. Create the folder (`resume-tailor`) in one of the locations above.
+2. Copy this repo's files into that folder (`SKILL.md`, `references/`, `scripts/`).
+3. Restart Claude (or start a new chat) so the skill is loaded.
+
 ## How It Works
 
-1. **User shares a job description** → Claude provides structured analysis (fit score, gaps, H-1B sponsorship, optimization plan)
-2. **User approves plan** → Claude selects bullets from `master-bullets.md` and builds a tailored resume
-3. **Compilation** → LaTeX resume compiled to PDF, both files presented to user
+1. **Install the skill** → add `resume-tailor` as a user skill or project skill (see section above)
+2. **Set up `master-bullets.md`** → generate it quickly using the "Quick Setup (Any LLM)" section below
+3. **Share a job description** → Claude provides structured analysis (fit score, gaps, H-1B sponsorship, optimization plan)
+4. **Approve the plan** → Claude selects bullets from `master-bullets.md` and builds a tailored resume
+5. **Compile output** → LaTeX resume is compiled to PDF, and both TEX/PDF are returned
 
 ## Key Principles
 
