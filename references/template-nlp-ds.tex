@@ -1,5 +1,5 @@
 \documentclass[10pt,a4paper]{article}
-\usepackage[left=0.5in,right=0.5in,top=0.5in,bottom=0.5in]{geometry}
+\usepackage[left=0.4in,right=0.4in,top=0.4in,bottom=0.4in]{geometry}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{hyperref}
@@ -12,7 +12,7 @@
     urlcolor=blue
 }
 % Section heading format
-\titlespacing*{\section}{0pt}{1ex}{0.7ex}
+\titlespacing*{\section}{0pt}{1ex}{0.5ex}
 \titleformat{\section}
   {\bfseries\large\color{black}}{}{0em}{}[\titlerule]
 \titlespacing*{\subsection}{0pt}{0.5ex}{0.5ex}
@@ -28,20 +28,22 @@
 
 % Name and Contact in two vertically centered columns
 \noindent
-\begin{minipage}[c]{0.55\textwidth} % 'c' for vertical centering
+\begin{minipage}[c]{0.45\textwidth}
     \vspace{0pt}
     {\LARGE \textbf{AYUSH MALL}}
 \end{minipage}%
-\begin{minipage}[c]{0.45\textwidth} % also vertically centered
+\begin{minipage}[c]{0.55\textwidth}
     \raggedleft
-    Seattle, WA \ $|$ \ \href{tel:[YOUR_PHONE]}{[YOUR_PHONE]} \\
-    \href{https://www.linkedin.com/in/ayush-mall}{LinkedIn} \ $|$ \ \href{https://ayushmall.com}{ayushmall.com} \ $|$ \
-    \href{mailto:amall@uw.edu?subject=Resume\%20Enquiry}{amall@uw.edu} \\
+    Sunnyvale, CA \ $|$ \ \href{tel:12064035956}{(206) 403 5956} \ $|$ \
+    \href{mailto:mall.ayush0710@gmail.com?subject=Resume\%20Enquiry}{mall.ayush0710@gmail.com} \\
+    \href{https://www.linkedin.com/in/ayush-mall}{LinkedIn} \ $|$ \
+    \href{https://github.com/ayushmall0710}{Github}\ $|$ \
+    \href{https://ayushmall.com}{ayushmall.com} \\
 \end{minipage}
 
 \vspace{0.2em}
 
-\noindent\textit{Data Scientist with 4+ years of experience designing data systems and driving actionable insights. Currently contributing to an agentic data platform start-up while pursuing an MS in Data Science at the University of Washington.}
+\noindent\textit{Data Scientist with 4+ years of experience designing data systems and driving actionable insights. Currently contributing to an agentic data platform start-up building enterprise AI infrastructure.}
 
 % \noindent\textit{Data Scientist with 4+ years of experience designing data systems, and driving actionable insight generation. Supporting GenAI-native data platform development while pursuing an MS in Data Science at the University of Washington.}
 
@@ -52,9 +54,9 @@
 % Skills & Tech-stack
 \section*{Skills \& Tech-stack}
 
-\textbf{Core Competencies:} NLP, Agentic Systems, Computer Vision, Distributed Computing, Machine Learning, Data Engineering, ETL, Statistical Modeling, Data Warehousing, Cloud Data Infrastructure, Data Visualization \\
-\textbf{Languages and Frameworks:} Python, SQL, BAML, Polars, PySpark, mQuery, Scikit-learn, TensorFlow, PyTorch \\
-\textbf{Platforms \& Tools:} Temporal.io, Databricks, DuckDB, Docker, Apache Iceberg, Huggingface Transformers, Microsoft Azure (ADF, ADLS), Tableau, QlikSense, Git, CICD, RESTful Web Services
+\textbf{Core Competencies:} Machine Learning, NLP, Agentic Systems, Retrieval-Augmented Generation (RAG), LLM Evaluation \& Deployment, Statistical Modeling, Distributed Computing, Data Engineering, ETL, Computer Vision, Cloud Data Infrastructure \\
+\textbf{Languages and Frameworks:} Python, SQL, protobuf, Pydantic, LiteLLM, Polars, PySpark, Scikit-learn, PyTorch, TensorFlow \\
+\textbf{Platforms \& Tools:} Databricks (FS, Notebooks, Catalog, Jobs), Hugging Face Transformers, Temporal.io, Apache Iceberg, DuckDB, Docker, Microsoft Azure (ADF, ADLS), AWS, GCP, Tableau, Git, CICD, vector search, MCP
 
 % \textbf{Core Competencies:} Data Engineering, ETL, Distributed Computing, Database Management, Data Warehousing, Machine Learning, Cloud Data Infrastructure, Batch Data Processing, NLP, Statistical Modeling, Data Visualization \\
 % \textbf{Languages and Frameworks:} Python, SQL, PySpark, MapReduce, Scikit-learn, PyTorch, Object-Relational Modeling \\
@@ -64,15 +66,18 @@
 
 % Professional Experience
 \section*{Professional Experience}
-\subsection{Data Science \& Engineering Intern | Corvic AI, Mountain View \hfill
+\subsection{Machine Learning Engineer | Corvic AI, Mountain View \hfill
 \textit{Jun 2025 -- Present}}
-\textit{GenAI-native enterprise data-platform turning complex, multimodal data into explainable, actionable intelligence.}
+\textit{Intelligence Composition Platform turning heterogeneous enterprise data into deployable AI applications through agentic orchestration and multimodal retrieval.}
 \begin{itemize}
+    \item \textbf{Delivered a conversational platform in production}, enabling non-technical users to build and query \textbf{million-scale knowledge graphs} through natural language, with vector search and multi-tool LLM agent orchestration.
 
-    \item \textbf{Automated end-to-end evaluation frameworks} for LLM-based information composition systems, implementing automated benchmarking pipelines with LLM-as-a-judge validation across multiple domain-specific datasets, enabling systematic quality measurement and model performance tracking.
-    \item \textbf{Designed and delivered an end-to-end ingestion framework} enabling integration of multi-cloud object storage (S3, Azure Blob, GCS) in product, supporting incremental loads and Apache Iceberg for large-scale data management.
-    \item \textbf{Built a scalable LLM-augmentation feature} enabling million-row scale data enrichment via user prompts (e.g., identifying sustainability keywords and assigning ESG scores), unlocking diverse downstream use cases.
+    \item \textbf{Established an automated evaluation framework} for the platform, benchmarking agent outputs across \textbf{functionality, quality, security, and performance} to enable systematic quality measurement across releases.
+    \item \textbf{Designed and delivered an end-to-end ingestion framework} integrating multi-cloud object storage (S3, Azure Blob, GCS) with incremental loads and delta management, \textbf{capable of processing 50M+} files in production.
+    \item \textbf{Forecasted customer ingestion patterns} using \textbf{Silverkite} (multi-seasonality, holidays) to optimize resource utilization by temporal workers, resulting in an \textbf{18\% reduction} in compute costs.
+    % \item \textbf{Built a scalable LLM-augmentation feature} enabling million-row scale data enrichment via user prompts (e.g., identifying sustainability keywords and assigning ESG scores), unlocking diverse downstream use cases.
     % \item \textbf{Scoped ESG compliance applications} by prototyping LLM-based entity retrieval, aligning platform capabilities with high-value regulatory use cases.  
+   % \item \textbf{Engaged with a client to demonstrate the prototyped LLM-augmentation feature}, tailoring it to their data workflow, showcasing its value for their use case and driving deal conversion.
 
 \end{itemize}
 \vspace{0.3em}
@@ -80,10 +85,10 @@
 \textit{Oct 2021 -- Sept 2024}}
 \textit{Shipping and Maritime: Key contributor to project centralizing emission data management and analytics using the Azure tech stack, automating reporting for compliance, and enabling sustainable decision-making through PowerBI.}
 \begin{itemize}
-    \item \textbf{Engineered and deployed data pipelines} using ADF, Databricks, ADLS, and SQL to integrate 5 diverse sources, collaborating with 8 cross-functional teams to automate emission reporting, achieving \textbf{97.85\% reduction} in turnaround.
+    \item \textbf{Engineered and deployed data pipelines} using ADF, Databricks, ADLS, and SQL to integrate 5 diverse sources, collaborating with 8 cross-functional teams to automate emission reporting, achieving \textbf{97.85\% reduction} in turnaround and \textbf{\$80,000} in annual operational savings.
     \item \textbf{Designed a DBSCAN-based clustering framework} utilizing metrics like AER and EEOI to group voyages into efficiency tiers, enabling ranked emission-performance profiling.
     \item \textbf{Developed an ADF solution template} in an individual initiative submitted to the organization's Continuous Improvement (CI) program, saving \textbf{$\sim$\$65,000 annually} in FTE costs from a single data solution use case.
-    \item Integrated an end-to-end solution for a data source, achieving annual \textbf{savings of \$80,000} in operational costs.
+    % \item Integrated an end-to-end solution for a data source, achieving annual \textbf{savings of \$80,000} in operational costs.
     % \item \textbf{Articulated portfolio objectives and strategic goals} to a C-suite executive by presenting a business value review, securing resource allocation that \textbf{supported 4 key initiatives} throughout the fiscal year.
     % \item \textbf{Designed a KPI scoring system} with Power BI and SharePoint, collaborating with 5 GMs \& the SVP, saving \textbf{40 hrs quarterly for top-tier leadership} by streamlining performance reporting.
     \item \textbf{Led Knowledge Sharing Team} of the Logistics Portfolio, disseminating domain knowledge across 18 natural teams.
@@ -95,9 +100,9 @@
 \begin{itemize}
     \item \textbf{Architected and deployed a unified business analytics platform} integrating automation, data processing, and visualization layers to streamline operational workflows.
     \item \textbf{Digitized key supply-chain processes} in the textile domain, \textbf{improving raw-to-product turnaround by 27\%} and enabling faster, data-driven decision-making through real-time KPI tracking.
-    \item \textbf{Built and hosted interactive dashboards} with ApexCharts, REST APIs, Redis, and PostgreSQL for cross-functional visibility into sales, operations, and finance performance.
+    % \item \textbf{Built and hosted interactive dashboards} with ApexCharts, REST APIs, Redis, and PostgreSQL for cross-functional visibility into sales, operations, and finance performance.
     % \item \textbf{Architected scalable data solutions} integrating process automation, analytics, and visualization layers that improved operational efficiency and decision-making across client portfolios.
-    % \item \textbf{Led end-to-end client engagements} from pitching and scoping to sub-goaling, and progress tracking---ensuring alignment with business objectives and on-time delivery of solutions.
+    % \item \textbf{Led end-to-end client engagements} from pitching and scoping to sub-goaling, and progress tracking, ensuring alignment with business objectives and on-time delivery of solutions.
 \end{itemize}
 
 
@@ -114,7 +119,7 @@
 \section*{Education}
 \subsection{Master's in Data Science (MSDS) | University of Washington, Seattle \hfill
 \textit{Sept 2024 -- Mar 2026}}
-Coursework focused on statistical modeling, experiment design, and ML\ $|$\ GPA: 3.85/4.0
+Coursework focused on statistical modeling, experiment design, and ML\ $|$\ GPA: 3.9/4.0
 
 \subsection{Bachelor of Technology | Amity University, Mumbai \hfill
 \textit{Mar 2017 -- Jun 2021}}
@@ -123,13 +128,21 @@ Major: Computer Science \& Engineering\ $|$\ Minor: Photography\ $|$\ GPA: 9.26/
 % Research & Projects
 \section*{Research \& Projects}
 
-\subsection{PET Reconstruction from MRI Using CNN and Diffusion Frameworks%
-\href{https://github.com/[USERNAME]/mri-to-pet-image-synthesis}{~\faExternalLink*} \hfill \textit{Jan 2025 -- Apr 2025}}
-Conducting research to synthesize PET images from MRI scans using CNNs and diffusion-based stochastic models. Aims to offer non-invasive, cost-effective alternatives to PET imaging for use in neurology, oncology, and precision medicine.
+% \subsection{PET Reconstruction from MRI Using CNN and Diffusion Frameworks%
+% \href{https://github.com/aaditya0106/mri-to-pet-image-synthesis}{~\faExternalLink*} \hfill \textit{Jan 2025 -- Apr 2025}}
+% Conducting research to synthesize PET images from MRI scans using CNNs and diffusion-based stochastic models. Aims to offer non-invasive, cost-effective alternatives to PET imaging for use in neurology, oncology, and precision medicine.
 
-\subsection{Deepfake Face Swapping Detection Using Generative Adversarial Networks%
-\href{https://ieeexplore.ieee.org/document/10486289}{~\faExternalLink*}   \hfill \textit{Published Feb 2024}}
-Investigated GAN-based detection methods for identifying deepfake manipulations in visual media. Implemented adversarial training framework using CelebA dataset, achieving competitive discriminator and generator loss metrics (0.70558 and 0.72143 respectively) to distinguish AI-generated content. Published in IEEE Conference Proceedings (DOI: 10.1109).
+% \subsection{Deepfake Face Swapping Detection Using Generative Adversarial Networks%
+% \href{https://ieeexplore.ieee.org/document/10486289}{~\faExternalLink*}   \hfill \textit{Published Feb 2024}}
+% Investigated GAN-based detection methods for identifying deepfake manipulations in visual media. Implemented adversarial training framework using CelebA dataset, achieving competitive discriminator and generator loss metrics (0.70558 and 0.72143 respectively) to distinguish AI-generated content. Published in IEEE Conference Proceedings (DOI: 10.1109).
+
+\subsection{Awaken AI -- EEG Clinical Prognostics Pipeline (UW MSDS Capstone)%
+\href{https://github.com/ayushmall0710/awaken-ai}{~\faExternalLink*} \hfill \textit{Jan 2026 -- Mar 2026}}
+Built the first open-source, multi-paradigm EEG pipeline running oddball (P300/ERPs), language-tracking (ITPC/Morlet wavelets), and command-following (ERD + SVM classifier) on standard 19-channel ICU EEG, processing 9+ brain injury patients from raw EDF to automated HTML clinical report via a single CLI suite.
+
+\subsection{FeedForward: Global Malnutrition Monitoring (Databricks$\times$UW Hackathon, 1st Place)%
+\href{https://github.com/ayushmall0710/databricks-hackathon}{~\faExternalLink*} \hfill \textit{Nov 2024}}
+Built an end-to-end data platform on Databricks with ETL using Spark and Databricks Jobs. Developed ML forecasting models with MLflow covering 150+ countries for risk prediction, utilizing Unity Catalog for data governance and RBAC.
 
 \subsection{Environmental, Social, and Governance (ESG) Metric Quantification Using NLP \hfill \textit{Oct 2024 -- Feb 2025}}
 Conducted research on automating ESG metric quantification using NLP, integrating BERT and RAG frameworks for enhanced contextual analysis and KPI identification to improve ESG reporting transparency and efficiency.

@@ -8,13 +8,20 @@ A Claude AI skill for tailoring LaTeX resumes to job applications. Selects and a
 resume-tailor/
 ├── SKILL.md                          # Skill instructions for Claude
 ├── references/
-│   ├── master-bullets.md             # All available bullets organized by experience
+│   ├── master-bullets.md             # Worked example: one filled-in bullet history
+│   ├── master-bullets.template.md    # Blank version to fill with your own history
+│   ├── template-all-rounder.tex      # All-rounder resume template (default base)
 │   ├── template-nlp-ds.tex           # NLP/Data Science focused resume template
 │   ├── template-de-sa.tex            # Data Engineering/Solution Architect template
 │   └── template-cover-letter.tex     # Cover letter template
 └── scripts/
     └── compile_resume.py             # LaTeX compilation script
 ```
+
+`master-bullets.md` and the `.tex` templates ship filled in with one person's real
+history so you can see a complete working example. Replace them with your own:
+start from `master-bullets.template.md` (see Quick Setup below) and edit the
+contact block, education, and bullets in whichever `.tex` template you use.
 
 ## Install in Claude (Skill Types)
 

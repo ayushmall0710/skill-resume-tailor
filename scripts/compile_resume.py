@@ -3,24 +3,55 @@
 Compile a LaTeX resume to PDF, copy to outputs, and print paths for presentation.
 
 Usage:
-    python3 scripts/compile_resume.py <tex_file> [--name <output_name>]
+    python3 scripts/compile_resume.py <tex_file> [--name <output_name>] [--out <dir>]
 
 Examples:
-    python3 scripts/compile_resume.py /home/claude/resume.tex
-    python3 scripts/compile_resume.py /home/claude/resume.tex --name Microsoft_MLE_Resume
+    python3 scripts/compile_resume.py ./resume.tex
+    python3 scripts/compile_resume.py ./resume.tex --name Microsoft_MLE_Resume
+    python3 scripts/compile_resume.py ./resume.tex --out ~/Documents/applications
+
+Output directory resolution (first that works):
+    1. --out <dir>
+    2. $RESUME_TAILOR_OUT
+    3. /mnt/user-data/outputs   (claude.ai sandbox)
+    4. the .tex file's own directory
 """
 
 import argparse
+import os
 import subprocess
 import shutil
 import sys
 from pathlib import Path
 
-OUTPUT_DIR = Path("/mnt/user-data/outputs")
 
-def compile_latex(tex_path: Path, output_name: str = None) -> tuple[Path, Path]:
+def resolve_output_dir(tex_path: Path, explicit: str = None) -> Path:
+    """Pick the first writable output directory from the resolution order."""
+    candidates = []
+    if explicit:
+        candidates.append(Path(explicit).expanduser())
+    if os.environ.get("RESUME_TAILOR_OUT"):
+        candidates.append(Path(os.environ["RESUME_TAILOR_OUT"]).expanduser())
+    # claude.ai sandbox: only when that tree actually exists, so a normal
+    # machine doesn't get a stray /mnt/... directory created on it
+    sandbox = Path("/mnt/user-data/outputs")
+    if sandbox.parent.is_dir():
+        candidates.append(sandbox)
+    candidates.append(tex_path.parent)
+    for c in candidates:
+        try:
+            c.mkdir(parents=True, exist_ok=True)
+            probe = c / ".rt_write_test"
+            probe.touch()
+            probe.unlink()
+            return c
+        except Exception:
+            continue
+    return tex_path.parent
+
+def compile_latex(tex_path: Path, output_name: str = None, out_dir: str = None) -> tuple[Path, Path]:
     """Compile LaTeX file to PDF and copy to outputs directory."""
-    
+
     if not tex_path.exists():
         print(f"Error: {tex_path} not found", file=sys.stderr)
         sys.exit(1)
@@ -63,38 +94,39 @@ def compile_latex(tex_path: Path, output_name: str = None) -> tuple[Path, Path]:
             if line.startswith('Pages:'):
                 pages = int(line.split(':')[1].strip())
                 if pages > 1:
-                    print(f"⚠️  WARNING: Resume is {pages} pages (should be 1 page)", file=sys.stderr)
+                    print(f"WARNING: Resume is {pages} pages (should be 1 page)", file=sys.stderr)
                 else:
-                    print(f"✓ Resume is 1 page")
+                    print(f"[OK] Resume is 1 page")
                 break
     except:
         pass  # pdfinfo may not be available
     
     # Copy to outputs with desired name
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    
-    pdf_dest = OUTPUT_DIR / f"{base_name}.pdf"
-    tex_dest = OUTPUT_DIR / f"{base_name}.tex"
+    output_dir = resolve_output_dir(tex_path, out_dir)
+
+    pdf_dest = output_dir / f"{base_name}.pdf"
+    tex_dest = output_dir / f"{base_name}.tex"
     
     shutil.copy(pdf_source, pdf_dest)
     shutil.copy(tex_path, tex_dest)
     
-    print(f"✓ Compiled and copied to outputs:")
+    print(f"[OK] Compiled and copied to {output_dir}:")
     print(f"  PDF: {pdf_dest}")
     print(f"  TEX: {tex_dest}")
-    
-    # Output paths for present_files tool (JSON format for easy parsing)
+
+    # Machine-readable line for callers that want to pick up the paths
     print(f"\nPRESENT_FILES:{pdf_dest},{tex_dest}")
-    
+
     return pdf_dest, tex_dest
 
 def main():
-    parser = argparse.ArgumentParser(description="Compile LaTeX resume and copy to outputs")
+    parser = argparse.ArgumentParser(description="Compile LaTeX resume and copy to an outputs directory")
     parser.add_argument("tex_file", help="Path to the .tex file")
     parser.add_argument("--name", help="Output filename (without extension)", default=None)
-    
+    parser.add_argument("--out", help="Output directory (default: sandbox outputs dir, else the .tex file's directory)", default=None)
+
     args = parser.parse_args()
-    compile_latex(Path(args.tex_file), args.name)
+    compile_latex(Path(args.tex_file), args.name, args.out)
 
 if __name__ == "__main__":
     main()
