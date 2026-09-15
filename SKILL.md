@@ -9,6 +9,10 @@ allowed-tools: Bash
 
 Tailors LaTeX resumes for job applications by selecting and arranging existing content, not rewriting it.
 
+This skill assumes setup is already complete: `references/master-bullets.md` and the
+`.tex` files hold the content of the person you are tailoring for. If they still contain
+someone else's details, stop and run [SETUP.md](https://github.com/ayushmall0710/skill-resume-tailor/blob/main/SETUP.md) first.
+
 ## Core Principle: Pick, Don't Edit
 
 **Default behavior is to SELECT bullets from `references/master-bullets.md`, not modify them.**
@@ -79,20 +83,6 @@ pdflatex -interaction=nonstopmode Resume.tex
 pdfinfo Resume.pdf | grep Pages   # must say 1
 ```
 
-**Before handing anything to the user, run the identity check.** This skill ships with a
-worked example (Ayush Mall's real resume). If your installed copy was not fully
-personalized during setup, the example's identity can survive into a generated resume.
-Grep the output for the example's values:
-
-```bash
-grep -riE 'ayush|corvic|awaken|aegis|amity|feedforward|sunnyvale|206\) 403|9\.26' <path/to/Resume.tex>
-```
-
-This must return **nothing**. If it returns anything, the skill is not set up for this
-person: stop, do not deliver the resume, and complete the setup in the README first.
-(If you are genuinely tailoring a resume for Ayush Mall, this check will fire on every
-run - skip it deliberately rather than by accident.)
-
 Then hand the user both the PDF and the TEX (the script also copies them to an outputs directory when one is available).
 
 ### 5. Document Changes
@@ -145,7 +135,7 @@ A file with `.template.` in its name is blank and gets filled in during setup. E
 file is operative and already carries this person's content.
 
 - `references/master-bullets.md`: all bullets organized by experience, plus the fixed Education section and the `## Conventions` block
-- `references/master-bullets.template.md`: the blank version, used only during setup (see the README runbook)
+- `references/master-bullets.template.md`: the blank version, used only during setup (see [SETUP.md](https://github.com/ayushmall0710/skill-resume-tailor/blob/main/SETUP.md))
 - `references/personal-header.template.tex`: blank name/contact and education blocks, used only during setup
 - `references/resume-all-rounder.tex`: broad framing, the default base
 - `references/resume-nlp-ds.tex`: NLP/Data Science slant
