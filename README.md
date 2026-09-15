@@ -81,16 +81,16 @@ Fill every section, including:
 
 Then check it against the [4-point review checklist](#4-point-review-checklist).
 
-### Step 5 - Rebuild the LaTeX template as this person's baseline resume
+### Step 5 - Rebuild the resume as this person's baseline
 
-Pick the base template you will work from (`template-all-rounder.tex` is the default;
-`template-nlp-ds.tex` and `template-de-sa.tex` are role-slanted variants).
+Pick the base you will work from (`resume-all-rounder.tex` is the default;
+`resume-nlp-ds.tex` and `resume-de-sa.tex` are role-slanted variants).
 
-The shipped template is the worked example's own resume end to end, so all of it needs
+The shipped file is the worked example's own resume end to end, so all of it needs
 replacing, not just the top:
 
 1. **Name/contact block and education block.** `references/personal-header.template.tex`
-   holds both with `<placeholders>` and notes on exactly where they sit in the template.
+   holds both with `<placeholders>` and notes on exactly where they sit in the file.
 2. **Summary line.** Pick one of the Summary Statement Variants from the new
    `master-bullets.md`.
 3. **Skills & Tech-stack.** Use one of the Skills Sections blocks from `master-bullets.md`.
@@ -105,16 +105,16 @@ base that per-application tailoring starts from. Keep the preamble, section orde
 margins, and spacing exactly as they are.
 
 If you will also write cover letters, replace the contact block and the body of
-`template-cover-letter.tex` too (its company/role fields are already `{[placeholders]}`).
+`cover-letter.tex` too (its company/role fields are already `{[placeholders]}`).
 
-**Then delete the templates you did not personalize** from `<install>/references/`.
+**Then delete the resume files you did not personalize** from `<install>/references/`.
 They still hold the worked example's identity, and leaving them in place means a later
 tailoring run can pick one up by mistake. They remain available in the clone if you
 want another framing later:
 
 ```bash
 # example: keeping only the all-rounder base and the cover letter
-rm <install>/references/template-nlp-ds.tex <install>/references/template-de-sa.tex
+rm <install>/references/resume-nlp-ds.tex <install>/references/resume-de-sa.tex
 ```
 
 ### Step 6 - Verify setup, then stop
@@ -134,9 +134,9 @@ Then confirm the toolchain produces a valid resume:
 
 ```bash
 cd <install>/references
-pdflatex -interaction=nonstopmode template-all-rounder.tex
-pdflatex -interaction=nonstopmode template-all-rounder.tex
-pdfinfo template-all-rounder.pdf | grep Pages    # must say 1
+pdflatex -interaction=nonstopmode resume-all-rounder.tex
+pdflatex -interaction=nonstopmode resume-all-rounder.tex
+pdfinfo resume-all-rounder.pdf | grep Pages    # must say 1
 ```
 
 Once both checks pass, setup is complete. Read `SKILL.md` and follow its workflow from
@@ -150,16 +150,22 @@ there; it assumes everything above is already done.
 resume-tailor/
 ├── SKILL.md                            # Skill instructions for Claude (person-agnostic)
 ├── references/
-│   ├── master-bullets.md               # Worked example: one filled-in bullet history
-│   ├── master-bullets.template.md      # Blank version to fill with your own history
-│   ├── personal-header.template.tex    # Name/contact + education blocks with placeholders
-│   ├── template-all-rounder.tex        # All-rounder resume template (default base)
-│   ├── template-nlp-ds.tex             # NLP/Data Science focused resume template
-│   ├── template-de-sa.tex              # Data Engineering/Solution Architect template
-│   └── template-cover-letter.tex       # Cover letter template
+│   ├── master-bullets.template.md      # BLANK - fill in with your own history
+│   ├── personal-header.template.tex    # BLANK - name/contact + education blocks
+│   ├── master-bullets.md               # Bullet history (ships with the example's)
+│   ├── resume-all-rounder.tex          # Resume, broad framing - the default base
+│   ├── resume-nlp-ds.tex               # Resume, NLP/Data Science slant
+│   ├── resume-de-sa.tex                # Resume, Data Engineering/Solution Architect slant
+│   └── cover-letter.tex                # Cover letter
 └── scripts/
     └── compile_resume.py               # LaTeX compilation script
 ```
+
+**Naming rule:** a file with `.template.` in its name is **blank** and you fill it in.
+Every other file is **operative** - the skill reads and produces it at runtime - and
+ships carrying the worked example's data, which setup replaces in place. So
+`master-bullets.template.md` is a blank you copy from; `master-bullets.md` is the real
+file the skill reads.
 
 Person-specific content lives entirely in `master-bullets.md` and the `.tex` files.
 `SKILL.md` is person-agnostic and never needs editing to set the skill up for someone
