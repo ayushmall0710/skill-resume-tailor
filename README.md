@@ -7,17 +7,33 @@ existing content from a master bullet list rather than rewriting — following t
 The repo ships a complete **worked example** (one person's real resume history) so you
 can see what a filled-in skill looks like.
 
-## Setup
+## Quick start
 
-**→ [SETUP.md](SETUP.md)**
+Paste this to your coding agent (Claude Code, or anything that can clone a repo and run
+commands):
 
-Hand that file (or this repo's URL) to an agent and it can install the skill and
-configure it for a new person end to end. It covers prerequisites, install locations for
-different runtimes, and the two approval gates where the user signs off on their bullets
-and their resume versions.
+```text
+Set up this skill for me: https://github.com/ayushmall0710/skill-resume-tailor
+
+Clone it, read SETUP.md, and follow steps 1 through 6 exactly. Use the resume
+below as the source material. Ask me to approve my bullets and my resume before
+you call setup done.
+
+<paste your resume here>
+```
+
+That is enough. [SETUP.md](SETUP.md) carries the rest: prerequisites, where to install
+for your runtime, and the two approval gates where you sign off on your bullets and your
+resume versions before anything is considered done.
+
+Once setup passes, start using it:
+
+```text
+Here's a job description, tailor my resume for it: <paste JD or link>
+```
 
 Setup does not edit this repo. The agent copies the skill into its runtime's skill
-location and personalizes that copy.
+location and personalizes that copy, so the worked example here stays intact.
 
 ## Structure
 
