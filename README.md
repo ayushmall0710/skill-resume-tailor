@@ -1,83 +1,60 @@
 # Resume Tailor Skill
 
-A Claude AI skill for tailoring LaTeX resumes to job applications. Selects and arranges existing content from a master bullet list rather than rewriting — following the **"Pick, Don't Edit"** principle.
+A Claude AI skill for tailoring LaTeX resumes to job applications. Selects and arranges
+existing content from a master bullet list rather than rewriting — following the
+**"Pick, Don't Edit"** principle.
+
+The repo ships a complete **worked example** (one person's real resume history) so you
+can see what a filled-in skill looks like.
+
+## Setup
+
+**→ [SETUP.md](SETUP.md)**
+
+Hand that file (or this repo's URL) to an agent and it can install the skill and
+configure it for a new person end to end. It covers prerequisites, install locations for
+different runtimes, and the two approval gates where the user signs off on their bullets
+and their resume versions.
+
+Setup does not edit this repo. The agent copies the skill into its runtime's skill
+location and personalizes that copy.
 
 ## Structure
 
 ```
 resume-tailor/
-├── SKILL.md                          # Skill instructions for Claude
+├── SKILL.md                            # Skill instructions for Claude (person-agnostic)
 ├── references/
-│   ├── master-bullets.md             # All available bullets organized by experience
-│   ├── template-nlp-ds.tex           # NLP/Data Science focused resume template
-│   ├── template-de-sa.tex            # Data Engineering/Solution Architect template
-│   └── template-cover-letter.tex     # Cover letter template
+│   ├── master-bullets.template.md      # BLANK - fill in with your own history
+│   ├── personal-header.template.tex    # BLANK - name/contact + education blocks
+│   ├── master-bullets.md               # Bullet history (ships with the example's)
+│   ├── resume-all-rounder.tex          # Resume, broad framing - the default base
+│   ├── resume-nlp-ds.tex               # Resume, NLP/Data Science slant
+│   ├── resume-de-sa.tex                # Resume, Data Engineering/Solution Architect slant
+│   └── cover-letter.tex                # Cover letter
 └── scripts/
-    └── compile_resume.py             # LaTeX compilation script
+    └── compile_resume.py               # LaTeX compilation script
 ```
 
-## Install in Claude (Skill Types)
+**Naming rule:** a file with `.template.` in its name is **blank** and you fill it in.
+Every other file is **operative** - the skill reads and produces it at runtime - and
+ships carrying the worked example's data, which setup replaces in place.
 
-Claude supports two common skill locations:
-
-- **Skills in Claude AI**: Settings -> Capabilities -> Skills -> + Add
-- **User skill** (available in all projects): `~/.claude/skills/resume-tailor/`
-- **Project skill** (available only in one repo): `<repo>/.claude/skills/resume-tailor/`
-
-Install steps:
-
-1. Create the folder (`resume-tailor`) in one of the locations above.
-2. Copy this repo's files into that folder (`SKILL.md`, `references/`, `scripts/`).
-3. Restart Claude (or start a new chat) so the skill is loaded.
+Person-specific content lives entirely in `master-bullets.md` and the `.tex` files.
+`SKILL.md` is person-agnostic and never needs editing to set the skill up for someone new.
 
 ## How It Works
 
-1. **Install the skill** → add `resume-tailor` as a user skill or project skill (see section above)
-2. **Set up `master-bullets.md`** → generate it quickly using the "Quick Setup (Any LLM)" section below
-3. **Share a job description** → Claude provides structured analysis (fit score, gaps, H-1B sponsorship, optimization plan)
-4. **Approve the plan** → Claude selects bullets from `master-bullets.md` and builds a tailored resume
-5. **Compile output** → LaTeX resume is compiled to PDF, and both TEX/PDF are returned
+Once setup is complete:
+
+1. **Share a job description** → Claude provides structured analysis (fit score, gaps, H-1B sponsorship, optimization plan)
+2. **Approve the plan** → Claude selects bullets from `master-bullets.md` and builds a tailored resume
+3. **Compile output** → the resume is compiled to PDF and both TEX/PDF are returned
 
 ## Key Principles
 
-- **Pick, Don't Edit**: Default behavior is to SELECT bullets, not modify them
-- **1 Page Always**: Resume must always be exactly 1 page
-- **Format is Sacred**: Never change LaTeX structure, margins, spacing, or section order
-- **H-1B Analysis Required**: Every JD analysis includes sponsorship assessment
-
-## Quick Setup (Any LLM)
-
-Use this to bootstrap `references/master-bullets.md` in minutes.
-
-1. Upload `references/master-bullets.template.md` to any other LLM.
-2. Paste the prompt below into any LLM with your resume content.
-3. Save the generated markdown into `references/master-bullets.md` and review with the checklist.
-
-### Copy-Paste Prompt
-
-```text
-Fill the attached template `master-bullets.template.md` using my resume content.
-
-Rules:
-- Keep the exact headings and order from the template.
-- Do not invent tools, metrics, dates, or titles.
-- Ask user if they need rewrites for bullets, only if they approve rewrite for clarity and impact, but keep facts true.
-- Mark only top 1-2 bullets per company as *PREFERRED*.
-- Use (rarely used) only for valid but niche bullets.
-- Return markdown only.
-
-Resume content:
-<PASTE_YOUR_RESUME_HERE>
-```
-
-### 4-Point Review Checklist
-
-- [ ] Dates and company names match your resume exactly.
-- [ ] No fabricated numbers, tools, or claims.
-- [ ] Preferred bullets are clearly strongest and measurable.
-- [ ] Projects, skills sections, summaries, and metrics table are all filled.
-
-### If Output Is Off
-
-- Wrong structure: `Regenerate using the exact template headings and order only.`
-- Too repetitive: `Merge similar bullets and keep the strongest variant.`
+- **Pick, Don't Edit**: default behavior is to SELECT bullets, not modify them
+- **1 Page Always**: the resume must always be exactly 1 page
+- **Format is Sacred**: never change LaTeX structure, margins, spacing, or section order
+- **Person-agnostic skill**: all personal content lives in `master-bullets.md` and the `.tex` files
+- **H-1B Analysis Required**: every JD analysis includes a sponsorship assessment

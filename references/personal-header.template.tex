@@ -1,0 +1,53 @@
+% ============================================================================
+% Personal header + education blocks, with placeholders.
+%
+% These are the only two regions of a resume file that carry identity.
+% During setup, replace the matching regions in whichever resume file you picked
+% (resume-all-rounder.tex / resume-nlp-ds.tex / resume-de-sa.tex) with
+% filled-in versions of the blocks below.
+%
+% Everything else in that file (skills, experience, projects) gets rebuilt
+% from your own references/master-bullets.md, so it does not appear here.
+%
+% After substituting, run the identity check from step 6 of SETUP.md to verify
+% nothing from the shipped worked example survived. It must return nothing.
+% ============================================================================
+
+
+% --- BLOCK 1: name and contact -----------------------------------------------
+% In the resume files this sits just after \pagenumbering{gobble},
+% immediately before the summary line.
+
+\noindent
+\begin{minipage}[c]{0.45\textwidth}
+    \vspace{0pt}
+    {\LARGE \textbf{<YOUR NAME IN CAPS>}}
+\end{minipage}%
+\begin{minipage}[c]{0.55\textwidth}
+    \raggedleft
+    <City, ST> \ $|$ \ \href{tel:<E164PHONE>}{<(xxx) xxx xxxx>} \ $|$ \
+    \href{mailto:<you@example.com>?subject=Resume\%20Enquiry}{<you@example.com>} \\
+    \href{<https://www.linkedin.com/in/yourhandle>}{LinkedIn} \ $|$ \
+    \href{<https://github.com/yourhandle>}{Github}\ $|$ \
+    \href{<https://yoursite.com>}{Website} \\
+\end{minipage}
+
+\vspace{0.2em}
+
+% Summary line: pick one of the Summary Statement Variants from your
+% references/master-bullets.md and paste it here.
+\noindent\textit{<summary statement for this role>}
+
+
+% --- BLOCK 2: education -------------------------------------------------------
+% In the resume files this is the \section*{Education} body.
+% Keep it byte-identical to the Education section of your master-bullets.md.
+
+\section*{Education}
+\subsection{<Degree> | <Institution, City> \hfill
+\textit{<Start Mon YYYY> -- <End Mon YYYY>}}
+<One-line coursework focus>\ $|$\ GPA: <X.X/Y.Y>
+
+\subsection{<Degree> | <Institution, City> \hfill
+\textit{<Start Mon YYYY> -- <End Mon YYYY>}}
+Major: <Major>\ $|$\ Minor: <Minor>\ $|$\ GPA: <X.XX/Y.Y>

@@ -9,6 +9,10 @@ allowed-tools: Bash
 
 Tailors LaTeX resumes for job applications by selecting and arranging existing content, not rewriting it.
 
+This skill assumes setup is already complete: `references/master-bullets.md` and the
+`.tex` files hold the content of the person you are tailoring for. If they still contain
+someone else's details, stop and run [SETUP.md](https://github.com/ayushmall0710/skill-resume-tailor/blob/main/SETUP.md) first.
+
 ## Core Principle: Pick, Don't Edit
 
 **Default behavior is to SELECT bullets from `references/master-bullets.md`, not modify them.**
@@ -43,7 +47,7 @@ When user shares a JD, respond with structured analysis:
 - Mission, stage, recent news
 
 ## Optimization Plan
-- Base template selection
+- Base resume file selection
 - Bullet selections by section (reference master-bullets.md)
 - Skills reordering priorities
 - Project selection (pick 3)
@@ -58,26 +62,28 @@ Wait for user to approve plan before creating resume. Ask clarifying questions i
 ### 3. Create Resume
 
 After approval:
-1. Use exact LaTeX template structure (never change formatting)
+1. Use the exact LaTeX structure of the base file (never change formatting)
 2. Pull selected bullets from master list
 3. Reorder skills as planned
 4. Ensure exactly 1 page
 
 ### 4. Compile & Present
 
-Use the compile script:
+Copy the chosen base out of the skill to a working directory, edit it there, then compile with the script:
 
 ```bash
-python3 scripts/compile_resume.py /home/claude/Resume.tex --name Company_Role_Resume
+python3 scripts/compile_resume.py <path/to/Resume.tex> --name Company_Role_Resume
 ```
 
-Or manually:
+Or manually (run twice so links/refs resolve, then check the page count):
+
 ```bash
-cd /home/claude && pdflatex -interaction=nonstopmode Resume.tex
-cp Resume.tex Resume.pdf /mnt/user-data/outputs/
+pdflatex -interaction=nonstopmode Resume.tex
+pdflatex -interaction=nonstopmode Resume.tex
+pdfinfo Resume.pdf | grep Pages   # must say 1
 ```
 
-Then use `present_files` tool with both PDF and TEX paths.
+Then hand the user both the PDF and the TEX (the script also copies them to an outputs directory when one is available).
 
 ### 5. Document Changes
 
@@ -87,7 +93,7 @@ List all changes in bullet format:
 
 ## Format Rules (NEVER CHANGE)
 
-- LaTeX structure: Identical to templates
+- LaTeX structure: Identical to the shipped resume files
 - Margins/spacing: Do not adjust
 - Section order: Do not reorder
 - Length: Always exactly 1 page
@@ -99,23 +105,47 @@ List all changes in bullet format:
 - **Projects**: Pick 3 most relevant
 - **Summary**: Can adjust to match role/company
 
-## Key Context
+## Person-Specific Conventions
 
-- **H-1B Required**: Always include sponsorship analysis
-- **Graduation**: March 2026
-- **Experience**: 4+ years (3 yrs Shell + Corvic internship + Aegis co-founding)
-- **Domain interest**: Climate/sustainability when relevant
-- **Corvic ingestion bullet**: Always use 50M+ files version
+**Read the `## Conventions` block at the top of `references/master-bullets.md` and apply it.**
 
-## References
+That block carries everything specific to the person this skill is set up for: their
+background and framing, which projects are mandatory, which bullet variants to prefer,
+exact phrasings for particular metrics. It is authoritative. If it contradicts an
+assumption you would otherwise make, it wins.
 
-- `references/master-bullets.md`: All available bullets organized by experience
-- `references/template-nlp-ds.tex`: NLP/Data Science focused resume template
-- `references/template-de-sa.tex`: Data Engineering/Solution Architect focused resume template
-- `references/template-cover-letter.tex`: Cover letter template
+All person-specific content lives in `references/master-bullets.md` and the `.tex`
+files. This file (SKILL.md) is person-agnostic and should never need editing to
+set the skill up for someone new. If you find yourself wanting to edit SKILL.md with
+someone's personal details, put them in `master-bullets.md` instead.
 
-When creating a resume, copy the appropriate template to `/home/claude/` and modify from there.
+## Universal Conventions (Apply Without Asking)
+
+These hold regardless of whose resume this is.
+
+- **No em dashes** anywhere in resumes or outreach. Use commas, "to", or restructure.
+- **Accuracy over polish**: never invent metrics, overstate tool familiarity, or use phrasing the user can't defend in an interview. Prefer deliberate and defensible.
+- **Keep bullets outcome-focused**: specific orchestration/infra framework names belong in the Skills section (Languages/Frameworks and Platforms), not spelled out inside a bullet.
+- **Page margins**: the shipped resume files use `left=0.4in,right=0.4in,top=0.4in,bottom=0.4in`. The cover letter keeps its own 0.5in margins. Do not adjust either.
+- **Project links**: every project with a `Link:` in master-bullets.md must render its subsection heading with `\href{<link>}{~\faExternalLink*}` (fontawesome5's external-link glyph, starred/solid form) before the `\hfill` date. Projects with no link get no icon.
+
+## Files
+
+A file with `.template.` in its name is blank and gets filled in during setup. Every other
+file is operative and already carries this person's content.
+
+- `references/master-bullets.md`: all bullets organized by experience, plus the fixed Education section and the `## Conventions` block
+- `references/master-bullets.template.md`: the blank version, used only during setup (see [SETUP.md](https://github.com/ayushmall0710/skill-resume-tailor/blob/main/SETUP.md))
+- `references/personal-header.template.tex`: blank name/contact and education blocks, used only during setup
+- `references/resume-all-rounder.tex`: broad framing, the default base
+- `references/resume-nlp-ds.tex`: NLP/Data Science slant
+- `references/resume-de-sa.tex`: Data Engineering/Solution Architect slant
+- `references/cover-letter.tex`: cover letter base
+
+When creating a resume, copy the appropriate base to a working directory and modify from there.
 
 ## Cover Letters
 
-Only create when explicitly requested. Use existing cover letter template structure. No em dashes. Exactly 1 page.
+Only create when explicitly requested. Use the existing cover letter template structure. No em dashes. Exactly 1 page. Slightly warm/enthusiastic tone preferred.
+
+`references/cover-letter.tex` carries this person's contact block and body, with the per-application fields left as placeholders. Fill in `{[Company Name]}`, `{[City, State]}`, `{[Role Title]}`, and the three `{[tailored ...]}` phrases per application; the contact block, name, and body structure otherwise stay fixed. Keep the braces around any placeholder that sits right after a `\\` line break (LaTeX otherwise reads `\\[...]` as an optional length argument). Contact info must match the resume files.

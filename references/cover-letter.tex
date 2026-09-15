@@ -1,0 +1,61 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[left=0.5in,right=0.5in,top=0.5in,bottom=0.5in]{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{parskip}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue
+}
+% Name & contact in one line
+\begin{document}
+\pagenumbering{gobble}
+
+% Name and Contact in two vertically centered columns
+\noindent
+\begin{minipage}[c]{0.65\textwidth} % 'c' for vertical centering
+    \vspace{0pt}
+    {\LARGE \textbf{AYUSH MALL}}
+\end{minipage}%
+\begin{minipage}[c]{0.35\textwidth} % also vertically centered
+    \raggedleft
+    Sunnyvale, CA, +1 (206) 403 5956 \\
+    \href{mailto:mall.ayush0710@gmail.com}{mall.ayush0710@gmail.com} \ $|$ \href{https://www.linkedin.com/in/ayush-mall}{LinkedIn Profile}
+\end{minipage}
+
+\vspace{0.2em}
+
+\noindent \today
+
+\vspace{0.5em}
+
+% NOTE: keep the {braces} around every [placeholder] that sits right after a line break (\\).
+% LaTeX reads "\\[...]" as an optional length argument, so a bare bracket there causes a compile error.
+\noindent
+\textbf{Hiring Manager} \\
+{[Company Name]} \\
+{[City, State]}
+
+\vspace{1em}
+
+\noindent
+\textbf{Subject: Application for {[Role Title]}}
+
+\vspace{1em}
+
+Dear Hiring Manager,
+
+I am writing to express my interest in the \textbf{[Role Title]} position at {[Company Name]}. With 4+ years of experience spanning data engineering, applied machine learning, and agentic AI systems, I bring a strong foundation in building production ML infrastructure and deriving insights that inform product growth and user engagement. I recently completed a Master's in Data Science at the University of Washington, where my work bridged statistical modeling, experiment design, and ML-driven experimentation.
+
+At \textbf{Corvic AI}, I developed a multi-cloud ingestion framework (S3, Azure Blob, GCS) with Apache Iceberg to handle millions of files and built LLM-powered agentic features enabling real-time insight generation. Previously at \textbf{Shell}, I led automation of emission analytics across five global data systems using Azure Databricks and Power BI, reducing reporting time by 97.85\% and driving sustainability-focused decisions. These experiences honed my ability to translate complex data into measurable business and product impact, aligning closely with {[Company Name]}'s focus on {[tailored value proposition]}.
+
+I am particularly drawn to {[Company Name]}'s {[tailored hook: mission, product philosophy, or technical approach]}. The opportunity to apply agentic systems, ML evaluation, and experimentation to {[tailored problem area]} deeply resonates with both my technical expertise and my curiosity-driven approach to data science.
+
+Thank you for considering my application. I would welcome the opportunity to discuss how my experience and product intuition can contribute to {[Company Name]}'s mission.
+
+\vspace{1em}
+
+Sincerely, \\
+\textbf{Ayush Mall}
+
+\end{document}

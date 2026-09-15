@@ -1,0 +1,127 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[left=0.4in,right=0.4in,top=0.4in,bottom=0.4in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{parskip}
+\usepackage{fontawesome5}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue
+}
+% Section heading format
+\titlespacing*{\section}{0pt}{1ex}{0.5ex}
+\titleformat{\section}
+  {\bfseries\large\color{black}}{}{0em}{}[\titlerule]
+\titlespacing*{\subsection}{0pt}{0.5ex}{0.5ex}
+\titleformat{\subsection}
+  {\bfseries\normalsize\color{black}}{}{0em}{}
+
+% Tighter item spacing
+\setlist[itemize]{noitemsep, topsep=0pt, leftmargin=1.2em}
+
+\begin{document}
+\pagenumbering{gobble}
+
+% Name and Contact
+\noindent
+\begin{minipage}[c]{0.45\textwidth}
+    \vspace{0pt}
+    {\LARGE \textbf{AYUSH MALL}}
+\end{minipage}%
+\begin{minipage}[c]{0.55\textwidth}
+    \raggedleft
+    Sunnyvale, CA \ $|$ \ \href{tel:12064035956}{(206) 403 5956} \ $|$ \
+    \href{mailto:mall.ayush0710@gmail.com?subject=Resume\%20Enquiry}{mall.ayush0710@gmail.com} \\
+    \href{https://www.linkedin.com/in/ayush-mall}{LinkedIn} \ $|$ \
+    \href{https://github.com/ayushmall0710}{Github}\ $|$ \
+    \href{https://ayushmall.com}{ayushmall.com} \\
+\end{minipage}
+
+\vspace{0.2em}
+
+% DIFF 1: Updated summary with FDE-friendly framing
+\noindent\textit{ML Engineer with 4+ years of experience building and deploying production AI systems across enterprise environments. Currently developing agentic LLM applications and delivering AI infrastructure solutions at a GenAI startup.}
+
+% Skills & Tech-stack
+\section*{Skills \& Tech-stack}
+
+\textbf{Core Competencies:} Machine Learning, NLP, Agentic Systems, Retrieval-Augmented Generation (RAG), LLM Evaluation \& Deployment, Distributed Computing, Data Engineering, ETL, Statistical Modeling, Cloud Data Infrastructure \\
+\textbf{Languages and Frameworks:} Python, SQL, protobuf, Pydantic, LangGraph, LiteLLM, Polars, PySpark, Scikit-learn, PyTorch \\
+\textbf{Platforms \& Tools:} Databricks (FS, Notebooks, Catalog, Jobs), Hugging Face Transformers, Temporal.io, Apache Iceberg, DuckDB, SQL Server, Docker, Git, CI/CD, Microsoft Azure (ADF, ADLS), AWS, GCP, Vertex AI, vector search, MCP
+
+% Professional Experience
+\section*{Professional Experience}
+\subsection{Machine Learning Engineer | Corvic AI, Mountain View \hfill
+\textit{June 2025--Present}}
+\textit{Intelligence Composition Platform turning heterogeneous enterprise data into deployable AI applications through agentic orchestration and multimodal retrieval.}
+\begin{itemize}
+    \item \textbf{Delivered a conversational platform in production}, enabling non-technical users to build and query \textbf{million-scale knowledge graphs} through natural language, with vector search and multi-tool LLM agent orchestration.
+    \item \textbf{Designed and delivered an end-to-end ingestion framework} integrating multi-cloud object storage (S3, Azure Blob, GCS) with incremental loads and delta management, \textbf{capable of processing 50M+} files in production.
+    \item \textbf{Established an automated evaluation framework} for the platform, benchmarking agent outputs across \textbf{functionality, quality, security, and performance} to enable systematic quality measurement across releases.
+    % \item \textbf{Built a scalable LLM-augmentation feature} enabling million-row scale data enrichment via user prompts (e.g., identifying sustainability keywords and assigning ESG scores), unlocking diverse downstream use cases.
+    % \item \textbf{Engaged with a client to demonstrate the LLM-augmentation feature}, tailoring it to their data workflow, showcasing its value for their use case and driving deal conversion.
+\end{itemize}
+\vspace{0.3em}
+\subsection{Data Engineer | Shell India Markets Pvt. Ltd, Bangalore \hfill
+\textit{Oct 2021 -- Sept 2024}}
+\textit{Shipping and Maritime: Key contributor to project centralizing emission data management and analytics using the Azure tech stack, automating reporting for compliance, and enabling sustainable decision-making through PowerBI.}
+\begin{itemize}
+    \item \textbf{Engineered and deployed data pipelines} using ADF, Databricks, ADLS, and SQL to integrate 5 diverse sources, collaborating with 8 cross-functional teams to automate emission reporting, achieving \textbf{97.85\% reduction} in turnaround and \textbf{\$80,000} in annual operational savings.
+    \item \textbf{Designed a DBSCAN-based clustering framework} utilizing metrics like AER and EEOI to group voyages into efficiency tiers, enabling ranked emission-performance profiling.
+    \item \textbf{Developed an ADF solution template} in an individual initiative submitted to the organization's Continuous Improvement (CI) program, saving \textbf{$\sim$\$65,000 annually} in FTE costs from a single data solution use case.
+    \item \textbf{Articulated portfolio objectives and strategic goals} to a C-suite executive by presenting a business value review, securing resource allocation that \textbf{supported 4 key initiatives} throughout the fiscal year.
+    \item \textbf{Led Knowledge Sharing Team} of the Logistics Portfolio, disseminating domain knowledge across 18 natural teams.
+    % \item \textbf{Designed a KPI scoring system} with Power BI and SharePoint, collaborating with 5 GMs \& the SVP, saving \textbf{40 hrs quarterly for top-tier leadership} by streamlining performance reporting.
+\end{itemize}
+\vspace{0.3em}
+\subsection{Co-founder | Aegis Soft Solutions Pvt. Ltd, Ahmedabad \hfill
+\textit{May 2020 -- Aug 2021}}
+\textit{Co-founded a technology consulting firm delivering digitization and analytics-driven business solutions for small and mid-sized enterprises across multiple industries.}
+\begin{itemize}
+    \item \textbf{Architected and deployed a unified business analytics platform} integrating automation, data processing, and visualization layers to streamline operational workflows.
+    \item \textbf{Digitized key supply-chain processes} in the textile domain, \textbf{improving raw-to-product turnaround by 27\%} and enabling faster, data-driven decision-making through real-time KPI tracking.
+    % \item \textbf{Built and hosted interactive dashboards} with ApexCharts, REST APIs, Redis, and PostgreSQL for cross-functional visibility into sales, operations, and finance performance.
+    % DIFF 3: Added client engagement bullet for FDE signal
+    \item \textbf{Led end-to-end client engagements} from pitching and scoping to sub-goaling, and progress tracking, ensuring alignment with business objectives and on-time delivery of solutions.
+\end{itemize}
+
+% Education
+\section*{Education}
+\subsection{Master's in Data Science (MSDS) | University of Washington, Seattle \hfill
+\textit{Sept 2024 -- Mar 2026}}
+Coursework focused on statistical modeling, experiment design, and ML\ $|$\ GPA: 3.9/4.0
+
+\subsection{Bachelor of Technology | Amity University, Mumbai \hfill
+\textit{Mar 2017 -- Jun 2021}}
+Major: Computer Science \& Engineering\ $|$\ Minor: Photography\ $|$\ GPA: 9.26/10.0
+
+% Research & Projects
+\section*{Research \& Projects}
+
+\subsection{Awaken AI -- EEG Clinical Prognostics Pipeline (UW MSDS Capstone)%
+\href{https://github.com/ayushmall0710/awaken-ai}{~\faExternalLink*} \hfill \textit{Jan 2026 -- Mar 2026}}
+Built the first open-source, multi-paradigm EEG pipeline running oddball (P300/ERPs), language-tracking (ITPC/Morlet wavelets), and command-following (ERD + SVM classifier) on standard 19-channel ICU EEG, processing 9+ brain injury patients from raw EDF to automated HTML clinical report via a single CLI suite.
+
+% \subsection{PET Reconstruction from MRI Using CNN and Diffusion Frameworks%
+% \href{https://github.com/aaditya0106/mri-to-pet-image-synthesis}{~\faExternalLink*} \hfill \textit{Jan 2025 -- Apr 2025}}
+% Conducted research to synthesize PET images from MRI scans using CNNs and diffusion-based stochastic models. Offers non-invasive, cost-effective alternatives to PET imaging for use in neurology, oncology, and precision medicine.
+
+\subsection{FeedForward: Global Malnutrition Monitoring (Databricks$\times$UW Hackathon, 1st Place)%
+\href{https://github.com/ayushmall0710/databricks-hackathon}{~\faExternalLink*} \hfill \textit{Nov 2024}}
+Built an end-to-end data platform on Databricks with ETL using Spark and Databricks Jobs. Developed ML forecasting models with MLflow covering 150+ countries for risk prediction, utilizing Unity Catalog for data governance and RBAC.
+
+% \subsection{Environmental, Social, and Governance (ESG) Metric Quantification Using NLP \hfill \textit{Oct 2024 -- Feb 2025}}
+% Conducted research on automating ESG metric quantification using NLP, integrating BERT and RAG frameworks for enhanced contextual analysis and KPI identification to improve ESG reporting transparency and efficiency.
+
+% \subsection{Deepfake Face Swapping Detection Using Generative Adversarial Networks%
+% \href{https://ieeexplore.ieee.org/document/10486289}{~\faExternalLink*} \hfill \textit{Published Feb 2024}}
+% Investigated GAN-based detection methods for identifying deepfake manipulations in visual media. Implemented adversarial training framework using CelebA dataset, achieving competitive discriminator and generator loss metrics (0.70558 and 0.72143) to distinguish AI-generated content. Published in IEEE Conference Proceedings (DOI: 10.1109).
+
+% \subsection{Underwater Acoustic Monitoring for Marine Conservation (Orcasound Project)%
+% \href{https://github.com/orcasound}{~\faExternalLink*} \hfill \textit{Apr 2025 -- Jun 2025}}
+% Collaborated with the eScience Institute to build scalable data pipelines for marine noise monitoring in the Puget Sound. Supports marine conservation efforts and long-term ecological research through ambient sound analysis.
+
+\end{document}
