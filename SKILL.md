@@ -79,6 +79,20 @@ pdflatex -interaction=nonstopmode Resume.tex
 pdfinfo Resume.pdf | grep Pages   # must say 1
 ```
 
+**Before handing anything to the user, run the identity check.** This skill ships with a
+worked example (Ayush Mall's real resume). If your installed copy was not fully
+personalized during setup, the example's identity can survive into a generated resume.
+Grep the output for the example's values:
+
+```bash
+grep -riE 'ayush|corvic|awaken|aegis|amity|feedforward|sunnyvale|206\) 403|9\.26' <path/to/Resume.tex>
+```
+
+This must return **nothing**. If it returns anything, the skill is not set up for this
+person: stop, do not deliver the resume, and complete the setup in the README first.
+(If you are genuinely tailoring a resume for Ayush Mall, this check will fire on every
+run - skip it deliberately rather than by accident.)
+
 Then hand the user both the PDF and the TEX (the script also copies them to an outputs directory when one is available).
 
 ### 5. Document Changes
@@ -101,33 +115,29 @@ List all changes in bullet format:
 - **Projects**: Pick 3 most relevant
 - **Summary**: Can adjust to match role/company
 
-## Key Context
+## Person-Specific Conventions
 
-`references/master-bullets.md` is a filled-in **worked example** (one user's real history). The context and conventions below match that example. Replace `master-bullets.md` with your own history and swap these notes for your own before using the skill for real.
+**Read the `## Conventions` block at the top of `references/master-bullets.md` and apply it.**
 
-- **H-1B Required**: Always include sponsorship analysis (drop this step if work authorization is not a factor for you)
-- **Current role**: Machine Learning Engineer at Corvic AI (full-time since April 2026)
-- **Education**: MS in Data Science, University of Washington (graduated April 2026). No longer a student.
-- **Experience**: 4+ years total (3 yrs Shell Data Engineer + Corvic + Aegis co-founding)
-- **Domain interest**: Climate/sustainability when relevant, but search is broad
-- **Primary title**: ML Engineer. Building the platform at Corvic; was a tools consumer at Shell. Frame this transition through word choice, never explicit contrast, and never characterize Shell negatively.
+That block carries everything specific to the person this skill is set up for: their
+background and framing, which projects are mandatory, which bullet variants to prefer,
+exact phrasings for particular metrics. It is authoritative. If it contradicts an
+assumption you would otherwise make, it wins.
 
-## Locked Conventions (Apply Without Asking)
+All person-specific content lives in `references/master-bullets.md` and the `.tex`
+templates. This file (SKILL.md) is person-agnostic and should never need editing to
+set the skill up for someone new. If you find yourself wanting to edit SKILL.md with
+someone's personal details, put them in `master-bullets.md` instead.
 
-These belong to the worked example. Keep the transferable ones (no em dashes, 1 page, accuracy over polish) and rewrite the rest for your own history.
+## Universal Conventions (Apply Without Asking)
+
+These hold regardless of whose resume this is.
 
 - **No em dashes** anywhere in resumes or outreach. Use commas, "to", or restructure.
-- **Awaken AI project is mandatory** in every resume version, without exception (EEG clinical prognostics pipeline, UW MSDS Capstone). Current description: "Built the first open-source, multi-paradigm EEG pipeline running oddball (P300/ERPs), language-tracking (ITPC/Morlet wavelets), and command-following (ERD + SVM classifier) on standard 19-channel ICU EEG, processing 9+ brain injury patients from raw EDF to automated HTML clinical report via a single CLI suite."
-- **Corvic ingestion bullet**: always use the 50M+ files version.
-- **Corvic conversational-platform bullet**: tightened wording is "...through natural language, with vector search and multi-tool LLM agent orchestration."
-- **Corvic evaluation framework**: custom-built, described by four pillars: functionality, quality, security, performance.
-- **Don't name-drop specific frameworks in bullets**: orchestration/infra framework names belong in the Skills section (Languages/Frameworks and Platforms), never spelled out inside a bullet. Keep bullets outcome-focused.
-- **Corvic AI** hyperlinks to corvic.ai.
-- **FeedForward** dataset covers 150+ countries (not "serving").
-- **Page margins**: `left=0.4in,right=0.4in,top=0.4in,bottom=0.4in` on all resume templates. Cover letter keeps its own 0.5in margins.
-- **Education section** (fixed, every resume): MSDS UW Seattle, Sept 2024 -- Mar 2026, GPA 3.9/4.0; B.Tech Amity University Mumbai, Mar 2017 -- Jun 2021, CS&E major, Photography minor, GPA 9.26/10.0. See `references/master-bullets.md` Education section.
-- **Project links**: every project with a `Link:` in master-bullets.md must render its subsection heading with `\href{<link>}{~\faExternalLink*}` (fontawesome5's external-link glyph, starred/solid form) before the `\hfill` date. Projects with no link get no icon.
 - **Accuracy over polish**: never invent metrics, overstate tool familiarity, or use phrasing the user can't defend in an interview. Prefer deliberate and defensible.
+- **Keep bullets outcome-focused**: specific orchestration/infra framework names belong in the Skills section (Languages/Frameworks and Platforms), not spelled out inside a bullet.
+- **Page margins**: the shipped resume templates use `left=0.4in,right=0.4in,top=0.4in,bottom=0.4in`. The cover letter keeps its own 0.5in margins. Do not adjust either.
+- **Project links**: every project with a `Link:` in master-bullets.md must render its subsection heading with `\href{<link>}{~\faExternalLink*}` (fontawesome5's external-link glyph, starred/solid form) before the `\hfill` date. Projects with no link get no icon.
 
 ## Files
 

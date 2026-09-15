@@ -2,7 +2,28 @@
 
 All available bullets from your resume history. When tailoring a resume, SELECT from this list rather than editing bullets. Only modify a bullet if explicitly approved.
 
-**Conventions:** <your standing conventions, e.g. "No em dashes anywhere. <Flagship project> is mandatory in every resume. Keep specific framework names out of bullet text; list them only in the Skills section.">
+---
+
+## Conventions
+
+Everything person-specific lives in this file. SKILL.md carries only the rules that
+apply to everyone, and defers to this section for the rest. Fill this in for yourself.
+
+**Background:**
+
+- **Current role:** <Title at Company, since when>
+- **Education:** <Degree, institution, status - complete or in progress>
+- **Experience:** <N+ years total, and roughly how it breaks down>
+- **Primary title:** <the title you want to be read as, and any framing notes>
+- **Domain interest:** <industries/domains to lean into when the JD allows>
+
+**Content rules:**
+
+- **<Flagship project> is mandatory** in every resume version (delete this line if you have no must-include project).
+- **<Bullet with variants>:** always use the <which> version.
+- **<Company>** hyperlinks to <company-domain.com>.
+- **<Metric to state precisely>:** <the exact correct phrasing, e.g. "covers 150+ countries", not "serving">.
+- **Education block** is fixed on every resume version: see the Education section below. Do not vary GPA or dates.
 
 ---
 

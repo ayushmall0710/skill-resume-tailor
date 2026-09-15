@@ -2,7 +2,31 @@
 
 All available bullets from resume templates. When tailoring a resume, SELECT from this list rather than editing bullets. Only modify bullets if explicitly approved.
 
-**Conventions:** No em dashes anywhere. Awaken AI project is mandatory in every resume. Corvic ingestion always uses the 50M+ version. Corvic evaluation framework is described by its four pillars (functionality, quality, security, performance). Keep specific orchestration/infra framework names out of bullet text; list them only in the Skills section.
+---
+
+## Conventions
+
+Everything person-specific lives in this file. SKILL.md carries only the rules that
+apply to everyone, and defers to this section for the rest. Rewrite this whole block
+when you replace this file with your own history.
+
+**Background:**
+
+- **Current role:** Machine Learning Engineer at Corvic AI (full-time since April 2026)
+- **Education:** MS in Data Science, University of Washington (graduated April 2026). No longer a student, so never frame the degree as "pursuing".
+- **Experience:** 4+ years total (3 yrs Shell Data Engineer + Corvic + Aegis co-founding)
+- **Primary title:** ML Engineer. Building the platform at Corvic; was a tools consumer at Shell. Frame that transition through word choice, never explicit contrast, and never characterize Shell negatively.
+- **Domain interest:** Climate/sustainability when relevant, but the search is broad.
+
+**Content rules:**
+
+- **Awaken AI is mandatory** in every resume version, without exception.
+- **Corvic ingestion bullet:** always use the 50M+ files version.
+- **Corvic conversational-platform bullet:** the tightened wording is "...through natural language, with vector search and multi-tool LLM agent orchestration."
+- **Corvic evaluation framework:** custom-built, described by its four pillars (functionality, quality, security, performance).
+- **Corvic AI** hyperlinks to corvic.ai.
+- **FeedForward** dataset covers 150+ countries (not "serving").
+- **Education block** is fixed on every resume version: see the Education section below. Do not vary GPA or dates.
 
 ---
 

@@ -2,26 +2,168 @@
 
 A Claude AI skill for tailoring LaTeX resumes to job applications. Selects and arranges existing content from a master bullet list rather than rewriting — following the **"Pick, Don't Edit"** principle.
 
+The repo ships a complete **worked example** (one person's real resume history) so you can see what a filled-in skill looks like. Setup does not edit this repo: you copy the skill into your agent runtime's own skill location and personalize *that copy*.
+
+---
+
+## Setup (agent runbook)
+
+**If you are an agent and someone handed you this repo's URL: this section is your
+instruction set. Work through steps 1 to 6 in order. Do not start tailoring resumes
+until step 6 passes.**
+
+### Step 1 - Clone as a read-only reference
+
+```bash
+git clone https://github.com/ayushmall0710/skill-resume-tailor.git
+```
+
+Treat the clone as reference material. Do not edit it and do not commit to it. The
+worked example inside it stays intact so you can consult it as a model of a correctly
+filled-in skill.
+
+### Step 2 - Install the toolchain
+
+The skill compiles LaTeX and checks page counts, so `pdflatex` and `pdfinfo` must be on
+PATH. Follow [Prerequisites](#prerequisites) below for your OS, then confirm:
+
+```bash
+pdflatex --version
+pdfinfo -v
+```
+
+Both must print a version. If either says "command not found", stop and resolve it now.
+
+### Step 3 - Copy the skill into your runtime's skill location
+
+Create a `resume-tailor/` folder at the destination for your runtime and copy
+`SKILL.md`, `references/`, and `scripts/` into it.
+
+| Runtime | Destination |
+|---|---|
+| Claude Code, available in all projects | `~/.claude/skills/resume-tailor/` |
+| Claude Code, scoped to one repo | `<repo>/.claude/skills/resume-tailor/` |
+| Claude.ai | Bundle as a `.skill` archive (see below), then Settings -> Capabilities -> Skills -> + Add |
+| Any runtime with no skills directory | Leave the clone somewhere stable and reference `SKILL.md` and `references/` by absolute path |
+
+```bash
+# Example: Claude Code user skill
+mkdir -p ~/.claude/skills/resume-tailor
+cp -r SKILL.md references scripts ~/.claude/skills/resume-tailor/
+```
+
+For a Claude.ai `.skill` bundle, the archive must contain a single top-level
+`resume-tailor/` directory:
+
+```bash
+zip -r resume-tailor.skill resume-tailor/
+```
+
+From here on, **`<install>` means the copy you just created**, not the clone. Every
+remaining step edits files under `<install>`.
+
+### Step 4 - Fill in `master-bullets.md` for this person
+
+`<install>/references/master-bullets.md` currently holds the worked example. Replace it
+with the target person's history, using `references/master-bullets.template.md` as the
+shape.
+
+Source material: their existing resume, LinkedIn, or whatever they give you. If you
+have their resume text directly, fill the template yourself. If you are delegating to
+another LLM, use the [copy-paste prompt](#copy-paste-prompt) below.
+
+Fill every section, including:
+
+- The `## Conventions` block at the top. This is where all person-specific rules live
+  (background and framing, mandatory projects, preferred bullet variants, exact metric
+  phrasings). SKILL.md reads it and defers to it.
+- The `## Education` section, which must match what you put in the `.tex` in step 5.
+
+Then check it against the [4-point review checklist](#4-point-review-checklist).
+
+### Step 5 - Rebuild the LaTeX template as this person's baseline resume
+
+Pick the base template you will work from (`template-all-rounder.tex` is the default;
+`template-nlp-ds.tex` and `template-de-sa.tex` are role-slanted variants).
+
+The shipped template is the worked example's own resume end to end, so all of it needs
+replacing, not just the top:
+
+1. **Name/contact block and education block.** `references/personal-header.template.tex`
+   holds both with `<placeholders>` and notes on exactly where they sit in the template.
+2. **Summary line.** Pick one of the Summary Statement Variants from the new
+   `master-bullets.md`.
+3. **Skills & Tech-stack.** Use one of the Skills Sections blocks from `master-bullets.md`.
+4. **Professional Experience.** Replace each `\subsection{...}` company heading and its
+   `\item` bullets with the new person's companies and their LaTeX-formatted bullets
+   from `master-bullets.md`.
+5. **Research & Projects.** Same, using their projects. Keep the
+   `\href{<link>}{~\faExternalLink*}` icon on projects that have a link.
+
+The result should be a valid one-page resume for this person, which then serves as the
+base that per-application tailoring starts from. Keep the preamble, section order,
+margins, and spacing exactly as they are.
+
+If you will also write cover letters, replace the contact block and the body of
+`template-cover-letter.tex` too (its company/role fields are already `{[placeholders]}`).
+
+**Then delete the templates you did not personalize** from `<install>/references/`.
+They still hold the worked example's identity, and leaving them in place means a later
+tailoring run can pick one up by mistake. They remain available in the clone if you
+want another framing later:
+
+```bash
+# example: keeping only the all-rounder base and the cover letter
+rm <install>/references/template-nlp-ds.tex <install>/references/template-de-sa.tex
+```
+
+### Step 6 - Verify setup, then stop
+
+Confirm nothing from the worked example survived into your installed copy:
+
+```bash
+grep -riE 'ayush|corvic|awaken|aegis|amity|feedforward|sunnyvale|206\) 403|9\.26' \
+  <install>/references/
+```
+
+**This must return nothing.** Anything it returns is example data you have not replaced
+yet: go back and finish step 4 or 5. (If you are genuinely setting this up for Ayush
+Mall, this check fires by design - skip it deliberately.)
+
+Then confirm the toolchain produces a valid resume:
+
+```bash
+cd <install>/references
+pdflatex -interaction=nonstopmode template-all-rounder.tex
+pdflatex -interaction=nonstopmode template-all-rounder.tex
+pdfinfo template-all-rounder.pdf | grep Pages    # must say 1
+```
+
+Once both checks pass, setup is complete. Read `SKILL.md` and follow its workflow from
+there; it assumes everything above is already done.
+
+---
+
 ## Structure
 
 ```
 resume-tailor/
-├── SKILL.md                          # Skill instructions for Claude
+├── SKILL.md                            # Skill instructions for Claude (person-agnostic)
 ├── references/
-│   ├── master-bullets.md             # Worked example: one filled-in bullet history
-│   ├── master-bullets.template.md    # Blank version to fill with your own history
-│   ├── template-all-rounder.tex      # All-rounder resume template (default base)
-│   ├── template-nlp-ds.tex           # NLP/Data Science focused resume template
-│   ├── template-de-sa.tex            # Data Engineering/Solution Architect template
-│   └── template-cover-letter.tex     # Cover letter template
+│   ├── master-bullets.md               # Worked example: one filled-in bullet history
+│   ├── master-bullets.template.md      # Blank version to fill with your own history
+│   ├── personal-header.template.tex    # Name/contact + education blocks with placeholders
+│   ├── template-all-rounder.tex        # All-rounder resume template (default base)
+│   ├── template-nlp-ds.tex             # NLP/Data Science focused resume template
+│   ├── template-de-sa.tex              # Data Engineering/Solution Architect template
+│   └── template-cover-letter.tex       # Cover letter template
 └── scripts/
-    └── compile_resume.py             # LaTeX compilation script
+    └── compile_resume.py               # LaTeX compilation script
 ```
 
-`master-bullets.md` and the `.tex` templates ship filled in with one person's real
-history so you can see a complete working example. Replace them with your own:
-start from `master-bullets.template.md` (see Quick Setup below) and edit the
-contact block, education, and bullets in whichever `.tex` template you use.
+Person-specific content lives entirely in `master-bullets.md` and the `.tex` files.
+`SKILL.md` is person-agnostic and never needs editing to set the skill up for someone
+new.
 
 ## Prerequisites
 
@@ -82,42 +224,29 @@ pdfinfo -v
 
 Both should print a version instead of "command not found".
 
-## Install in Claude (Skill Types)
-
-Claude supports two common skill locations:
-
-- **Skills in Claude AI**: Settings -> Capabilities -> Skills -> + Add
-- **User skill** (available in all projects): `~/.claude/skills/resume-tailor/`
-- **Project skill** (available only in one repo): `<repo>/.claude/skills/resume-tailor/`
-
-Install steps:
-
-1. Create the folder (`resume-tailor`) in one of the locations above.
-2. Copy this repo's files into that folder (`SKILL.md`, `references/`, `scripts/`).
-3. Restart Claude (or start a new chat) so the skill is loaded.
-
 ## How It Works
 
-1. **Install the skill** → add `resume-tailor` as a user skill or project skill (see section above)
-2. **Set up `master-bullets.md`** → generate it quickly using the "Quick Setup (Any LLM)" section below
-3. **Share a job description** → Claude provides structured analysis (fit score, gaps, H-1B sponsorship, optimization plan)
-4. **Approve the plan** → Claude selects bullets from `master-bullets.md` and builds a tailored resume
-5. **Compile output** → LaTeX resume is compiled to PDF, and both TEX/PDF are returned
+Once setup is complete:
+
+1. **Share a job description** → Claude provides structured analysis (fit score, gaps, H-1B sponsorship, optimization plan)
+2. **Approve the plan** → Claude selects bullets from `master-bullets.md` and builds a tailored resume
+3. **Compile output** → LaTeX resume is compiled to PDF, the identity check runs, and both TEX/PDF are returned
 
 ## Key Principles
 
 - **Pick, Don't Edit**: Default behavior is to SELECT bullets, not modify them
 - **1 Page Always**: Resume must always be exactly 1 page
 - **Format is Sacred**: Never change LaTeX structure, margins, spacing, or section order
+- **Person-agnostic skill**: all personal content lives in `master-bullets.md` and the `.tex` files
 - **H-1B Analysis Required**: Every JD analysis includes sponsorship assessment
 
-## Quick Setup (Any LLM)
+## Filling `master-bullets.md` with another LLM
 
-Use this to bootstrap `references/master-bullets.md` in minutes.
+Step 4 of the runbook, if you want to delegate the bullet extraction.
 
-1. Upload `references/master-bullets.template.md` to any other LLM.
-2. Paste the prompt below into any LLM with your resume content.
-3. Save the generated markdown into `references/master-bullets.md` and review with the checklist.
+1. Upload `references/master-bullets.template.md` to any LLM.
+2. Paste the prompt below along with the resume content.
+3. Save the generated markdown over `<install>/references/master-bullets.md` and review with the checklist.
 
 ### Copy-Paste Prompt
 
@@ -125,7 +254,7 @@ Use this to bootstrap `references/master-bullets.md` in minutes.
 Fill the attached template `master-bullets.template.md` using my resume content.
 
 Rules:
-- Keep the exact headings and order from the template.
+- Keep the exact headings and order from the template, including the ## Conventions section.
 - Do not invent tools, metrics, dates, or titles.
 - Ask user if they need rewrites for bullets, only if they approve rewrite for clarity and impact, but keep facts true.
 - Mark only top 1-2 bullets per company as *PREFERRED*.
@@ -141,7 +270,7 @@ Resume content:
 - [ ] Dates and company names match your resume exactly.
 - [ ] No fabricated numbers, tools, or claims.
 - [ ] Preferred bullets are clearly strongest and measurable.
-- [ ] Projects, skills sections, summaries, and metrics table are all filled.
+- [ ] Conventions, projects, skills sections, summaries, and metrics table are all filled.
 
 ### If Output Is Off
 
