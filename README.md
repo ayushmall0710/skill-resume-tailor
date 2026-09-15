@@ -23,6 +23,65 @@ history so you can see a complete working example. Replace them with your own:
 start from `master-bullets.template.md` (see Quick Setup below) and edit the
 contact block, education, and bullets in whichever `.tex` template you use.
 
+## Prerequisites
+
+The skill compiles LaTeX to PDF and checks the page count, so you need `pdflatex`
+and `pdfinfo` on PATH, plus Python 3 (stdlib only, no `pip install` needed) to run
+`scripts/compile_resume.py`.
+
+### macOS
+
+```bash
+# LaTeX (pdflatex) - BasicTeX is a ~100MB minimal install; use mactex-no-gui for the full distribution
+brew install --cask basictex
+# pdfinfo (poppler)
+brew install poppler
+```
+
+Open a new terminal after the BasicTeX install so PATH picks up `/Library/TeX/texbin`.
+BasicTeX is a minimal subset and doesn't ship every package the templates use
+(`fontawesome5`, `titlesec`, `enumitem`, `parskip`, `multicol`); if `pdflatex`
+errors with "File `<package>.sty' not found", install it directly:
+
+```bash
+sudo tlmgr update --self
+sudo tlmgr install fontawesome5 titlesec enumitem parskip multicol
+```
+
+(Use `brew install --cask mactex-no-gui` instead of BasicTeX if you'd rather have the full distribution up front and skip this step - it's a ~4GB download.)
+
+### Windows
+
+```bash
+# LaTeX (pdflatex) via MiKTeX
+winget install -e --id MiKTeX.MiKTeX
+# pdfinfo via poppler (winget's build), or use choco/scoop if you prefer
+winget install -e --id oschwartz10612.Poppler
+```
+
+Open a new terminal after installing so PATH picks up both tools. MiKTeX prompts
+to install missing packages on first compile ("Install on-the-fly") - accept that
+the first time you run the skill. If `winget` isn't available, install
+[MiKTeX](https://miktex.org/download) and [poppler for Windows](https://github.com/oschwartz10612/poppler-windows/releases)
+directly and add both `bin` folders to PATH.
+
+### Linux (Debian/Ubuntu)
+
+```bash
+sudo apt install texlive-latex-base texlive-latex-extra texlive-fonts-recommended poppler-utils
+```
+
+`texlive-latex-extra` covers the packages the templates use (`fontawesome5`, `titlesec`, `enumitem`, `parskip`).
+
+### Verify
+
+```bash
+pdflatex --version
+pdfinfo -v
+```
+
+Both should print a version instead of "command not found".
+
 ## Install in Claude (Skill Types)
 
 Claude supports two common skill locations:
